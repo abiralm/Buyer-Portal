@@ -3,14 +3,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Property, Favourite
-from .serializers import PropertySerializer, FavouriteSerializer
+from .serializers import PropertySerilizer,FavouriteSerializer
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def property_list(request):
     properties = Property.objects.all()
-    serializer = PropertySerializer(properties, many=True)
+    serializer = PropertySerilizer(properties, many=True)
     return Response(serializer.data)
 
 
